@@ -1,0 +1,14 @@
+.newChat{
+    padding: 10px 15px;
+    background-color:rgba(215, 199, 244, 1);
+    justify-content: space-around;
+    align-items: center;
+}
+.logo{
+    border-radius: 50%;
+    box-shadow: 1px 1px 10px #9c9c9c;
+}
+.newchatImg{
+    width: 20px;
+    height: 20px;
+}
