@@ -1,88 +1,69 @@
-import * as React from 'react'; 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import CssBaseline from '@mui/material/CssBaseline'; 
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton'; 
+import React, { useState } from 'react';
+import { AppBar, Box, Stack, Drawer, IconButton, Toolbar, Typography, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import logo from '../../assets/logo.png'
-import newChatImg from '../../assets/newchat.png'
 import './Sidebar.css';
+import logo from '../../assets/logo.png';
+import newChatImg from '../../assets/newchat.png';
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
-function Sidebar() { 
-
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
-
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
-
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
+function Sidebar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
+    setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <Stack direction="row" spacing={2} className='newChat'>
-        <Box component="img" src={logo} className='logo' />
-        <Typography component="h5" variant='h5' fontWeight="500">New Chat</Typography>
-        <Box component="img" src={newChatImg} className='newchatImg' />
-    </Stack>    
+    <Box>
+      <Stack direction="row" spacing={2} className="newChat">
+        <Box component="img" src={logo} className="logo" alt="Logo" />
+        <Typography ms={0} component="h6" variant="h6" fontWeight="500">
+          New Chat
+        </Typography>
+         
+        <Box component="img" src={newChatImg} className="newchatImg" alt="New Chat" />
+         
+      </Stack>
+      <Box sx={{ padding: '20px 0px' }}>
+        <Button variant="contained">Past Conversations</Button>
+      </Box>
+    </Box>
   );
- 
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor:"none",
-          background:"none",
-          boxShadow:"none",
+          background: 'none',
+          boxShadow: 'none',
         }}
       >
         <Toolbar>
           <IconButton
-            color="rgba(151, 133, 186, 1)"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            <MenuIcon />
+            <MenuIcon color="primary" />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" color="rgba(151, 133, 186, 1)">
+          <Typography variant="h6" noWrap component="div" color="primary">
             Bot AI
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} 
-      >
-       
-        <Drawer           
+
+      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
+        <Drawer
           variant="temporary"
           open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
+          onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
@@ -101,9 +82,9 @@ function Sidebar() {
         >
           {drawer}
         </Drawer>
-      </Box>       
+      </Box>
     </Box>
   );
 }
- 
+
 export default Sidebar;

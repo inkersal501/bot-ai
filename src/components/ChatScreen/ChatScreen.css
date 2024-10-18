@@ -1,0 +1,20 @@
+.logolg{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 10px #9c9c9c; 
+}
+.exampleBox{
+    background-color: #fff;
+    padding: 20px 10px 20px 10px;
+    text-align: start;
+    border-radius: 7px;
+    box-shadow: 1px 1px 4px #c0c0c0; 
+}
+.exampleContainer{
+    margin-top: 100px;
+}
+.defaultChatScreen{ 
+    position: fixed;
+    bottom: 100px;
+}
