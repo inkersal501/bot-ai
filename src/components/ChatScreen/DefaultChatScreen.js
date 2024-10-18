@@ -10,10 +10,12 @@ function DefaultChatScreen() {
     <div>
 
         <Box className='defaultChatScreen'>
-            <Typography variant="h4" gutterBottom>
-                How Can I Help You Today?
-            </Typography>
-            <Box component="img" src={logo} className="logolg" alt="Logo" />
+            <Box className='defaultChatScreenTop'>
+              <Typography variant="h4" gutterBottom>
+                  How Can I Help You Today?
+              </Typography>
+              <Box component="img" src={logo} className="logolg" alt="Logo" />
+            </Box>
             <Examples />
         </Box>
         

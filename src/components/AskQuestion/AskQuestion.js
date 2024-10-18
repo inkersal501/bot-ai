@@ -1,20 +1,23 @@
 import { Box, Stack, Button, TextField } from '@mui/material';
 import React from 'react';
 import './AskQuestion.css';
+
+function AskQuestion({askedQuestn, setAskedQuestn, handleAskedQuestn}) {
  
-function AskQuestion({askQuestn, setAskQuestn, handleaskQuestn}) {
+ 
   return (
     <div>
         <Box className='askQuestnBlock'>
-          <form onSubmit={handleaskQuestn}>
+           
+          <form onSubmit={handleAskedQuestn}>
             <Stack direction="row" spacing={2} className='askQuestnRow'>
-                <Box sx={{width:"80%"}}>
+                <Box sx={{width:"90%"}}>
                     <TextField 
                       fullWidth id="fullWidth" 
                       placeholder='Message Bot AI' 
                       required
-                      onInput={(e)=>setAskQuestn(e.target.value)}
-                      value={askQuestn}
+                      onInput={(e)=>setAskedQuestn(e.target.value)}
+                      value={askedQuestn}
                     />
                 </Box>
                 <Box><Button type="submit" variant="contained">Ask</Button></Box>

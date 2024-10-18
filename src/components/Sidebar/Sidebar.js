@@ -7,7 +7,7 @@ import newChatImg from '../../assets/newchat.png';
 
 const drawerWidth = 250;
 
-function Sidebar() {
+function Sidebar({newchat, setNewChat}) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -18,12 +18,10 @@ function Sidebar() {
     <Box>
       <Stack direction="row" spacing={2} className="newChat">
         <Box component="img" src={logo} className="logo" alt="Logo" />
-        <Typography ms={0} component="h6" variant="h6" fontWeight="500">
+        <Typography onClick={()=>setNewChat(true)} ms={0} component="h6" variant="h6" fontWeight="500">
           New Chat
-        </Typography>
-         
-        <Box component="img" src={newChatImg} className="newchatImg" alt="New Chat" />
-         
+        </Typography>         
+        <Box onClick={()=>setNewChat(true)} component="img" src={newChatImg} className="newchatImg" alt="New Chat"/>         
       </Stack>
       <Box sx={{ padding: '20px 0px' }}>
         <Button variant="contained">Past Conversations</Button>
@@ -38,7 +36,7 @@ function Sidebar() {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          background: 'none',
+          background: '#f5f2fb',
           boxShadow: 'none',
         }}
       >

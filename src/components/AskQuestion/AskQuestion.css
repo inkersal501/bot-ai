@@ -1,17 +1,20 @@
 .askQuestnBlock{
-    position: fixed;
-    bottom: 20px;
-    width: calc(100% - 250px);
+    /* position: fixed;
+    bottom: 20px; */
+    /* width: calc(100% - 250px); */
+    margin: auto 0px;
 }
 .askQuestnRow{
     align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
 }
 .askQuestnRow input{
     padding: 10px 12px !important;
     /* width: 100%; */
 } 
-@media screen and (max-width:576px){
+/* @media screen and (max-width:576px){
     .askQuestnBlock{
         width: inherit;
     }
-}
+} */

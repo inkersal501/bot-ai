@@ -1,3 +1,14 @@
+.chatScreen{
+    height: 90vh;
+    background: linear-gradient(180deg, rgba(215, 199, 244, 0.05) 0%, rgba(151, 133, 186, 0.2) 100%);
+    border-radius: 0px;
+    padding: 16px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 25px;
+}
 .logolg{
     width: 65px;
     height: 65px;
@@ -15,12 +26,60 @@
     margin-top: 100px;
 }
 .defaultChatScreen{ 
-    position: fixed;
-    bottom: 100px;
+    /* position: fixed;
+    bottom: 100px; */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
 }
-@media screen and (max-width:576px){
+.defaultChatScreenTop{
+    flex-grow: 1;
+}
+/* @media screen and (max-width:576px){
     .defaultChatScreen{
         position: relative;
         bottom: inherit;
     }
+} */
+ .chatContent{
+    height: auto;
+    overflow-y: scroll;
+    padding: 10px;
+ }
+
+.promptBox{
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.12);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    margin: 10px 0px;
 }
+.avatar{
+    width: 65px;
+    height: 69px; 
+    border-radius: 50%;
+}
+
+
+.chatContent::-webkit-scrollbar {
+    width: 8px;
+    
+  }
+  
+  /* Track */
+.chatContent::-webkit-scrollbar-track {
+    background: #bfbfbf;  
+  }
+   
+  /* Handle */
+.chatContent::-webkit-scrollbar-thumb {
+    background: #bbbbbb;
+    border-radius: 1rem; 
+  }
+  
+  /* Handle on hover */
+.chatContent::-webkit-scrollbar-thumb:hover {
+    background: #9c9c9c; 
+  }
