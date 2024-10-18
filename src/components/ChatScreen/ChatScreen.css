@@ -18,3 +18,9 @@
     position: fixed;
     bottom: 100px;
 }
+@media screen and (max-width:576px){
+    .defaultChatScreen{
+        position: relative;
+        bottom: inherit;
+    }
+}

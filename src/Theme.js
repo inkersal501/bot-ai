@@ -6,16 +6,13 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: 'rgba(151, 133, 186, 1)', 
+      main: '#AF9FCD', 
     },
     dark : {
-      main : '#102851',
-    },
-    black : {
-      main : '#333',
-    },
+      main : '#3C3C3C',
+    }, 
     light: {
-      main: 'rgba(151, 133, 186, .5)',
+      main: '#D7C7F4',
     }
   },
   components: {
@@ -31,9 +28,9 @@ const theme = createTheme({
           whiteSpace:"nowrap",
         },
         containedPrimary: {
-          backgroundColor: 'rgba(215, 199, 244, 1)', 
+          backgroundColor: '#D7C7F4', 
           '&:hover': {
-            backgroundColor: 'rgba(215, 199, 244, 1)', // Hover state color for primary buttons
+            backgroundColor: '#D7C7F4', // Hover state color for primary buttons
           },
         },
       },

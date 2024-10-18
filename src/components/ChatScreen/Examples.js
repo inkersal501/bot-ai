@@ -15,7 +15,7 @@ function Examples() {
   return (
     <div>
         <Box className='exampleContainer'>        
-            <Grid container rowSpacing={{ xs:2,lg:4 }} columnSpacing={{ lg:2 }}>
+            <Grid container rowSpacing={{ xs:1, lg:4 }} columnSpacing={{ xs:0, lg:2 }}>
                 {exampleData.map((example, index)=>(
                     <Grid size={{ xs: 12, sm: 12, md: 6 }} key={index}>
                         <ExampleCard text={example}/>
