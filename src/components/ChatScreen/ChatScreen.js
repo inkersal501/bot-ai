@@ -16,6 +16,9 @@ const ChatScreen = ({ newchat, setNewChat }) => {
     const [inProgress, setInProgress] = useState(false);
     const [tempData, setTempData] = useState(JSON.parse(localStorage.getItem("BotAiTempData")) || []);
     const boxRef = useRef(null);
+    // eslint-disable-next-line no-unused-vars
+    const [rating, setRating] = useState(0);
+
 
     const currDate = () => {
         const date = new Date();
@@ -88,6 +91,18 @@ const ChatScreen = ({ newchat, setNewChat }) => {
         }
     }, [newchat]);
 
+    const handleRating = (id, rating)=>{
+        const temp = tempData.map((data)=>{
+            if(id===data.id){
+                data.rating=rating;
+            }
+            return data;
+        });    
+        localStorage.setItem("BotAiTempData", JSON.stringify(temp));
+        setTempData(JSON.parse(localStorage.getItem("BotAiTempData")) || []);
+    };
+
+
     return (
         <Box className='chatScreen'> 
             {newchat ? (
@@ -99,7 +114,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
                             {data.from === "user" ? (
                                 <MyQuestion data={data} />
                             ) : (
-                                <Response data={data} />
+                                <Response data={data} handleRating={handleRating}/>
                             )}
                         </Box>
                     ))}  
