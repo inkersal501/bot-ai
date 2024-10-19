@@ -3,12 +3,10 @@ import React from 'react';
 import './AskQuestion.css';
 
 function AskQuestion({askedQuestn, setAskedQuestn, handleAskedQuestn}) {
- 
- 
+  
   return (
-    <div>
-        <Box className='askQuestnBlock'>
-           
+    <div>         
+        <Box className='askQuestnBlock'>           
           <form onSubmit={handleAskedQuestn}>
             <Stack direction="row" spacing={2} className='askQuestnRow'>
                 <Box sx={{width:"90%"}}>

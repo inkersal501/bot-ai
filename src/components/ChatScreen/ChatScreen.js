@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box } from '@mui/material';
+import { Box, LinearProgress } from '@mui/material';
 import AskQuestion from '../AskQuestion/AskQuestion'; 
 import './ChatScreen.css';
 import DefaultChatScreen from './DefaultChatScreen';
@@ -60,13 +60,15 @@ const ChatScreen = ({ newchat, setNewChat }) => {
             return ans["question"].toLowerCase().includes(askedQuestn.trim().toLowerCase());
           })[0];
           let response = result?result.response:defResponse; 
-          addToStorage("bot", response, Date.now()+1);    
+          addToStorage("bot", response, Date.now()+1); 
+          clearAsk();   
         }, 1000);         
 
       }else{
         console.log("Error: Type Something");
+        clearAsk();
       }
-      clearAsk();
+      
     };
 
     const scrollToBottom = () => {
@@ -102,12 +104,14 @@ const ChatScreen = ({ newchat, setNewChat }) => {
                         </Box>
                     ))}  
                     <div ref={boxRef} style={{ float: 'left', clear: 'both' }} />
+                    {inProgress && <LinearProgress />}
                 </Box>
             )}
             <AskQuestion                 
                 askedQuestn={askedQuestn} 
                 setAskedQuestn={setAskedQuestn} 
                 handleAskedQuestn={handleAskedQuestn}  
+                inProgress={inProgress}
             />
         </Box>
     );

@@ -1,5 +1,6 @@
 .chatScreen{
-    height: 90vh;
+    height: -webkit-fill-available;
+    /* height:fit-content; */
     background: linear-gradient(180deg, rgba(215, 199, 244, 0.05) 0%, rgba(151, 133, 186, 0.2) 100%);
     border-radius: 0px;
     padding: 16px;
@@ -63,23 +64,20 @@
 }
 
 
-.chatContent::-webkit-scrollbar {
-    width: 8px;
-    
-  }
-  
-  /* Track */
+/* .chatContent::-webkit-scrollbar {
+width: 8px;    
+}  
+
 .chatContent::-webkit-scrollbar-track {
-    background: #bfbfbf;  
-  }
-   
-  /* Handle */
+background: #bfbfbf;  
+}
+
+
 .chatContent::-webkit-scrollbar-thumb {
-    background: #bbbbbb;
-    border-radius: 1rem; 
-  }
-  
-  /* Handle on hover */
+background: #bbbbbb;
+border-radius: 1rem; 
+}
+
 .chatContent::-webkit-scrollbar-thumb:hover {
-    background: #9c9c9c; 
-  }
+background: #9c9c9c; 
+} */
