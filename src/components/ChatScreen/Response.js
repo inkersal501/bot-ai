@@ -4,16 +4,25 @@ import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import avatar from '../../assets/logo2.png';
 import "./ChatScreen.css";
 import { useState } from 'react';
+import FeedbackModal from './FeedbackModal';
+
+
 function Response({data, handleRating}) {
   
   const [showLike, setShowLike] = useState(false);   
   const [rating, setRating] = useState(data.rating || 0);
   const [showRating, setShowRating] = useState(rating>0?true:false);
   
+  const [openModal, setOpenModal] = useState(false);
+
   const handleSetRating = (newValue)=>{
     setRating(newValue);
     handleRating(data.id, newValue); 
   };
+
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
+
 
   return (
     <div>
@@ -34,7 +43,10 @@ function Response({data, handleRating}) {
                                 onClick={()=>setShowRating(true)}
                                 color="dark" fontSize='12px' cursor="pointer"
                               />
-                              <ThumbDownOffAltIcon color="dark" fontSize='12px' />
+                              <ThumbDownOffAltIcon 
+                                onClick={()=>setOpenModal(true)}
+                                color="dark" fontSize='12px' cursor="pointer"
+                              />
                             </Stack>
                             }
                         </Stack>
@@ -55,6 +67,7 @@ function Response({data, handleRating}) {
             </Stack>
             
         </Box>
+       {openModal && <FeedbackModal openModal={openModal} handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}     /> }
     </div>
   )
 }
