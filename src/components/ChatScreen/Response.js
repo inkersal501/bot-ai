@@ -21,7 +21,8 @@ function Response({data, handleRating, handleFeedback}) {
   
   const handleSetRating = (newValue)=>{
     setRating(newValue);
-    handleRating(data.id, newValue); 
+    handleRating(data.id, newValue);
+    setEditableRating(false); 
   };
 
   return (
