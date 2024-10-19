@@ -20,12 +20,12 @@ function Home() {
   return (
     <div>
       <Box sx={{ display: 'flex', height: '100vh' }}> 
- 
+     
         <Sidebar newchat={newchat} setNewChat={setNewChat}/>
 
         <Box
-          component="main" backgroundColor='#f5f5f5'
-        > 
+          component="main" backgroundColor='#f5f5f5' flexGrow={1}
+        >          
           <ChatScreen newchat={newchat} setNewChat={setNewChat}/> 
       </Box>
     </Box>

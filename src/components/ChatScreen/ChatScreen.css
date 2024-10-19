@@ -1,5 +1,6 @@
 .chatScreen{
-    height: 90vh;
+    height: -webkit-fill-available;
+    /* height:fit-content; */
     background: linear-gradient(180deg, rgba(215, 199, 244, 0.05) 0%, rgba(151, 133, 186, 0.2) 100%);
     border-radius: 0px;
     padding: 16px;
@@ -52,7 +53,9 @@
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.12);
     padding: 15px 20px;
     display: flex;
-    align-items: center;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
     border-radius: 1rem;
     margin: 10px 0px;
 }
@@ -63,23 +66,40 @@
 }
 
 
-.chatContent::-webkit-scrollbar {
-    width: 8px;
-    
-  }
-  
-  /* Track */
+/* .chatContent::-webkit-scrollbar {
+width: 8px;    
+}  
+
 .chatContent::-webkit-scrollbar-track {
-    background: #bfbfbf;  
-  }
-   
-  /* Handle */
+background: #bfbfbf;  
+}
+
+
 .chatContent::-webkit-scrollbar-thumb {
-    background: #bbbbbb;
-    border-radius: 1rem; 
-  }
-  
-  /* Handle on hover */
+background: #bbbbbb;
+border-radius: 1rem; 
+}
+
 .chatContent::-webkit-scrollbar-thumb:hover {
-    background: #9c9c9c; 
-  }
+background: #9c9c9c; 
+} */
+
+.feedbackModal{
+    border-width: 0 !important;
+    outline: none !important;
+    border: 0px solid !important;
+    border-radius: .5rem;
+}
+
+.feedbackTextContainer{
+    width: 100%;
+    margin: 20px 0px;
+}
+.feedbackTextContainer > *{
+    width: 100%;
+}
+
+.FeedbackbtnContainer{
+    display: flex;
+    justify-content: flex-end;
+}

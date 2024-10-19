@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box } from '@mui/material';
+import { Box, LinearProgress } from '@mui/material';
 import AskQuestion from '../AskQuestion/AskQuestion'; 
 import './ChatScreen.css';
 import DefaultChatScreen from './DefaultChatScreen';
@@ -15,7 +15,8 @@ const ChatScreen = ({ newchat, setNewChat }) => {
     const [asked, setAsked] = useState(false); 
     const [inProgress, setInProgress] = useState(false);
     const [tempData, setTempData] = useState(JSON.parse(localStorage.getItem("BotAiTempData")) || []);
-    const boxRef = useRef(null);
+    const boxRef = useRef(null); 
+
 
     const currDate = () => {
         const date = new Date();
@@ -60,13 +61,15 @@ const ChatScreen = ({ newchat, setNewChat }) => {
             return ans["question"].toLowerCase().includes(askedQuestn.trim().toLowerCase());
           })[0];
           let response = result?result.response:defResponse; 
-          addToStorage("bot", response, Date.now()+1);    
+          addToStorage("bot", response, Date.now()+1); 
+          clearAsk();   
         }, 1000);         
 
       }else{
         console.log("Error: Type Something");
+        clearAsk();
       }
-      clearAsk();
+      
     };
 
     const scrollToBottom = () => {
@@ -86,6 +89,30 @@ const ChatScreen = ({ newchat, setNewChat }) => {
         }
     }, [newchat]);
 
+    const handleRating = (id, rating)=>{
+        const temp = tempData.map((data)=>{
+            if(id===data.id){
+                data.rating=rating;
+            }
+            return data;
+        });    
+        localStorage.setItem("BotAiTempData", JSON.stringify(temp));
+        setTempData(JSON.parse(localStorage.getItem("BotAiTempData")) || []);
+        return true;
+    };
+
+    const handleFeedback = (id, feedback) =>{
+        const temp = tempData.map((data)=>{
+            if(id===data.id){
+                data.feedback=feedback;
+            }
+            return data;
+        });    
+        localStorage.setItem("BotAiTempData", JSON.stringify(temp));
+        setTempData(JSON.parse(localStorage.getItem("BotAiTempData")) || []);
+        return true;
+    };
+
     return (
         <Box className='chatScreen'> 
             {newchat ? (
@@ -97,17 +124,19 @@ const ChatScreen = ({ newchat, setNewChat }) => {
                             {data.from === "user" ? (
                                 <MyQuestion data={data} />
                             ) : (
-                                <Response data={data} />
+                                <Response data={data} handleRating={handleRating} handleFeedback={handleFeedback}/>
                             )}
                         </Box>
                     ))}  
                     <div ref={boxRef} style={{ float: 'left', clear: 'both' }} />
+                    {inProgress && <LinearProgress />}
                 </Box>
             )}
             <AskQuestion                 
                 askedQuestn={askedQuestn} 
                 setAskedQuestn={setAskedQuestn} 
                 handleAskedQuestn={handleAskedQuestn}  
+                inProgress={inProgress}
             />
         </Box>
     );
