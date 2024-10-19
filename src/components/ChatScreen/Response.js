@@ -9,11 +9,12 @@ import FeedbackModal from './FeedbackModal';
 
 function Response({data, handleRating, handleFeedback}) {
   
+  const response = data.response;
   const [showLike, setShowLike] = useState(false);   
-  const [rating, setRating] = useState(data.rating || 0);
+  const [rating, setRating] = useState(response.rating || 0);
   const [showRating, setShowRating] = useState(rating>0?true:false);
   const [editableRating, setEditableRating] = useState(false);
-  const [feedback, setFeedback] = useState(data.feedback?data.feedback:"")
+  const [feedback, setFeedback] = useState(response.feedback?response.feedback:"")
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => setOpenModal(true);
@@ -35,9 +36,9 @@ function Response({data, handleRating, handleFeedback}) {
                  <Box sx={{padding: {lg: '0px 10px 0px 0px'}}}>
                     <Stack spacing={2} textAlign="left">
                         <Typography component="p" variant='p' fontWeight="bold">Bot AI</Typography>
-                        <Typography component="p" variant='p' margin="10px 0px 0px 0px !important">{data.prompt}</Typography>
+                        <Typography component="p" variant='p' margin="10px 0px 0px 0px !important">{response.prompt}</Typography>
                         <Stack direction="row" justifyContent="space-between">
-                            <Typography component="p" variant='p' color='rgba(0, 0, 0, 0.62)' fontSize="12px">{data.time}</Typography>
+                            <Typography component="p" variant='p' color='rgba(0, 0, 0, 0.62)' fontSize="12px">{response.time}</Typography>
                             {showLike &&
                             <Stack direction="row" spacing={1}>
                               <ThumbUpOffAltIcon
@@ -64,10 +65,10 @@ function Response({data, handleRating, handleFeedback}) {
                           />
                           </Box>
                         }
-                        {data.feedback && data.feedback!=="" && 
+                        {response.feedback && response.feedback!=="" && 
                           <Box sx={{display:"flex", justifyContent:"start", gap:"10px"}}>
                             <Typography component="p" fontWeight="bold">Feedback :</Typography>
-                            <Typography component="p" >{data.feedback}</Typography>
+                            <Typography component="p" >{response.feedback}</Typography>
                           </Box>
                         }
                     </Stack>

@@ -5,6 +5,8 @@ import "./ChatScreen.css";
 
 
 function MyQuestion({data}) {
+
+  const qdata = data.request;
   return (
     <div>
         <Box className='promptBox'>
@@ -15,8 +17,8 @@ function MyQuestion({data}) {
                  <Box>
                     <Stack spacing={2} textAlign="left">
                         <Typography component="p" variant='p' fontWeight="bold">You</Typography>
-                        <Typography component="p" variant='p' margin="10px 0px 0px 0px !important">{data.prompt}</Typography>
-                        <Typography component="p" variant='p' color='rgba(0, 0, 0, 0.62)' fontSize="12px">{data.time}</Typography>
+                        <Typography component="p" variant='p' margin="10px 0px 0px 0px !important">{qdata.prompt}</Typography>
+                        <Typography component="p" variant='p' color='rgba(0, 0, 0, 0.62)' fontSize="12px">{qdata.time}</Typography>
                     </Stack>
                  </Box>
             </Stack>

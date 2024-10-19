@@ -34,11 +34,24 @@ const ChatScreen = ({ newchat, setNewChat }) => {
         return { time: `${hours}:${minutesStr} ${ampm}`, date: date.toISOString() };
     };
 
-    const addToStorage = (from, prompt, id) =>{
-      const temp = tempData;
-      temp.push({id, from: from, prompt : prompt, ...currDate() });      
-      localStorage.setItem("BotAiTempData", JSON.stringify(tempData));
+    const addtoTempStorage = (id, from, prompt) =>{
+        const dataIn = {prompt : prompt, ...currDate()};
+        let temp;
+        if(from==="user"){
+            temp = tempData;
+            temp.push({ id, request: dataIn });    
+        }else{
+            temp = tempData.map((data)=>{
+                if(id===data.id){
+                    data.response=dataIn;
+                }
+                return data;
+            });
+        }
+        
+      localStorage.setItem("BotAiTempData", JSON.stringify(temp));
       setTempData(JSON.parse(localStorage.getItem("BotAiTempData")) || []);
+
     };
 
     const clearAsk = ()=>{
@@ -48,6 +61,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
     };
 
     const handleAskedQuestn = (e) =>{
+
       e.preventDefault();
       if(inProgress)
         window.alert("Wait for the response");
@@ -56,15 +70,16 @@ const ChatScreen = ({ newchat, setNewChat }) => {
         setNewChat(false);
         setAsked(true);
         setInProgress(true);
+        const id = Date.now();
 
-        addToStorage("user", askedQuestn, Date.now());
+        addtoTempStorage(id, "user", askedQuestn);
 
         setTimeout(() => {
           const result = qdata.filter(ans=>{
             return ans["question"].toLowerCase().includes(askedQuestn.trim().toLowerCase());
           })[0];
           let response = result?result.response:defResponse; 
-          addToStorage("bot", response, Date.now()+1); 
+          addtoTempStorage(id, "bot", response); 
           clearAsk();   
         }, 1000);         
 
@@ -95,7 +110,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
     const handleRating = (id, rating)=>{
         const temp = tempData.map((data)=>{
             if(id===data.id){
-                data.rating=rating;
+                data.response.rating=rating;
             }
             return data;
         });    
@@ -107,7 +122,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
     const handleFeedback = (id, feedback) =>{
         const temp = tempData.map((data)=>{
             if(id===data.id){
-                data.feedback=feedback;
+                data.response.feedback=feedback;
             }
             return data;
         });    
@@ -134,11 +149,8 @@ const ChatScreen = ({ newchat, setNewChat }) => {
                 <Box className="chatContent">
                     {tempData.map((data) => (
                         <Box key={data.id}>
-                            {data.from === "user" ? (
-                                <MyQuestion data={data} />
-                            ) : (
-                                <Response data={data} handleRating={handleRating} handleFeedback={handleFeedback}/>
-                            )}
+                            {data.request && <MyQuestion data={data} />}
+                            {data.response && <Response data={data} handleRating={handleRating} handleFeedback={handleFeedback}/> }                             
                         </Box>
                     ))}  
                     <div ref={boxRef} style={{ float: 'left', clear: 'both' }} />
