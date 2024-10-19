@@ -20,4 +20,5 @@ font-family: 'Ubuntu' !important;
 .newchatImg{
     width: 20px;
     height: 20px;
+    cursor: pointer;
 } 

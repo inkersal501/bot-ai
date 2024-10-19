@@ -6,7 +6,8 @@ import DefaultChatScreen from './DefaultChatScreen';
 import qdata from '../../assets/data.json';
 import MyQuestion from './MyQuestion';
 import Response from './Response';
-
+import { useSnackbar } from 'notistack';
+ 
 const ChatScreen = ({ newchat, setNewChat }) => {
     
     const defResponse = "Sorry, we cannot find the answer for the prompt"; 
@@ -16,7 +17,9 @@ const ChatScreen = ({ newchat, setNewChat }) => {
     const [inProgress, setInProgress] = useState(false);
     const [tempData, setTempData] = useState(JSON.parse(localStorage.getItem("BotAiTempData")) || []);
     const boxRef = useRef(null); 
-
+    const { enqueueSnackbar } = useSnackbar();
+    // eslint-disable-next-line no-unused-vars
+    const [savedData, setSavedData] = useState(JSON.parse(localStorage.getItem("BotAiSavedData")) || []);
 
     const currDate = () => {
         const date = new Date();
@@ -113,6 +116,16 @@ const ChatScreen = ({ newchat, setNewChat }) => {
         return true;
     };
 
+    const handleSave = ()=>{
+        if(tempData && tempData.length>0){
+            localStorage.setItem("BotAiSavedData", JSON.stringify(tempData));
+            setSavedData(JSON.parse(localStorage.getItem("BotAiSavedData")) || []);
+            enqueueSnackbar("Conversation saved!", {variant: "success"});
+        }else{
+            enqueueSnackbar("No Conversations found", {variant: "danger"});
+        }        
+    };
+
     return (
         <Box className='chatScreen'> 
             {newchat ? (
@@ -137,6 +150,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
                 setAskedQuestn={setAskedQuestn} 
                 handleAskedQuestn={handleAskedQuestn}  
                 inProgress={inProgress}
+                handleSave={handleSave}
             />
         </Box>
     );

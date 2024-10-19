@@ -2,7 +2,7 @@ import { Box, Stack, Button, TextField } from '@mui/material';
 import React from 'react';
 import './AskQuestion.css';
 
-function AskQuestion({askedQuestn, setAskedQuestn, handleAskedQuestn}) {
+function AskQuestion({askedQuestn, setAskedQuestn, handleAskedQuestn, handleSave}) {
   
   return (
     <div>         
@@ -20,7 +20,7 @@ function AskQuestion({askedQuestn, setAskedQuestn, handleAskedQuestn}) {
                     />
                 </Box>
                 <Box><Button type="submit" variant="contained">Ask</Button></Box>
-                <Box><Button type="button" variant="contained">Save</Button></Box>
+                <Box><Button type="button" variant="contained" onClick={handleSave}>Save</Button></Box>
             </Stack>  
           </form>         
         </Box>
