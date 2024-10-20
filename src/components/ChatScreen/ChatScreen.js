@@ -39,7 +39,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
         let temp;
         if(from==="user"){
             temp = tempData;
-            temp.push({ id, request: dataIn });    
+            temp.push({ id, date: dataIn.date, request: dataIn });    
         }else{
             temp = tempData.map((data)=>{
                 if(id===data.id){

@@ -4,10 +4,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import './Sidebar.css';
 import logo from '../../assets/logo.png';
 import newChatImg from '../../assets/newchat.png';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 250;
 
-function Sidebar({newchat, setNewChat}) {
+function Sidebar({newchat, handleNewChat}) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -18,13 +19,13 @@ function Sidebar({newchat, setNewChat}) {
     <Box>
       <Stack direction="row" spacing={2} className="newChat">
         <Box component="img" src={logo} className="logo" alt="Logo" />
-        <Typography sx={{cursor:"pointer"}} onClick={()=>setNewChat(true)} ms={0} component="h6" variant="h6" fontWeight="500">
+        <Typography sx={{cursor:"pointer"}} onClick={handleNewChat} ms={0} component="h6" variant="h6" fontWeight="500">
           New Chat
         </Typography>         
-        <Box onClick={()=>setNewChat(true)} component="img" src={newChatImg} className="newchatImg" alt="New Chat"/>         
+        <Box onClick={handleNewChat} component="img" src={newChatImg} className="newchatImg" alt="New Chat"/>         
       </Stack>
-      <Box sx={{ padding: '20px 0px' }}>
-        <Button variant="contained">Past Conversations</Button>
+      <Box sx={{ padding: '20px 0px', textAlign:"center" }}>
+        <Link to="/saved"><Button variant="contained">Past Conversations</Button></Link>
       </Box>
     </Box>
   );

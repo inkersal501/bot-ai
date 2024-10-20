@@ -6,11 +6,16 @@ import { SnackbarProvider } from 'notistack'
 import App from './App'; 
 import theme from './Theme';
 import { ThemeProvider } from '@emotion/react';
+import SavedChat from './pages/SavedChat';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  }, 
+  {
+    path: "/saved",
+    element: <SavedChat />,
   }, 
 ]);
 
