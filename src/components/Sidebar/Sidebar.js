@@ -18,7 +18,7 @@ function Sidebar({newchat, handleNewChat}) {
   const drawer = (
     <Box>
       <Stack direction="row" spacing={2} className="newChat">
-        <Box component="img" src={logo} className="logo" alt="Logo" />
+        <Link to="/"><Box component="img" src={logo} className="logo" alt="Logo" /></Link>
         <Typography sx={{cursor:"pointer"}} onClick={handleNewChat} ms={0} component="h6" variant="h6" fontWeight="500">
           New Chat
         </Typography>         

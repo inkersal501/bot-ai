@@ -64,7 +64,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
 
       e.preventDefault();
       if(inProgress)
-        window.alert("Wait for the response");
+        enqueueSnackbar("Waiting for the response", {variant:"warning"});
 
       if(askedQuestn){
         setNewChat(false);
@@ -84,7 +84,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
         }, 1000);         
 
       }else{
-        console.log("Error: Type Something");
+        enqueueSnackbar("Error: Ask Something", {variant:"warning"});
         clearAsk();
       }
       

@@ -1,13 +1,14 @@
 import { Box, Stack, Typography, FormControl, Select, MenuItem } from '@mui/material';
 import React, {useState} from 'react';
 import './PastConversations.css'; 
+import Coversation from './Coversation';
 
 function PastConversations() {
 
-    const [ratingSelect, setRatingSelect] = useState("All Ratings");
+    const [selectedRating, setSelectedRating] = useState("All Ratings");
 
     const handleChange = (event) => {
-        setRatingSelect(event.target.value);
+        setSelectedRating(event.target.value);
     };
 
     return (
@@ -20,9 +21,8 @@ function PastConversations() {
                         <FormControl sx={{marginTop: "20px"}} size="small"> 
                             <Select 
                                 id="rating-select"
-                                value={ratingSelect} 
-                                onChange={handleChange}
-                                className='selectBox'
+                                value={selectedRating} 
+                                onChange={handleChange} 
                                 sx={{width: "150px", borderRadius: "33px"}} 
                             >   
                                 <MenuItem value={"All Ratings"}>All Ratings</MenuItem>
@@ -33,6 +33,9 @@ function PastConversations() {
                                 <MenuItem value={5}>5 Star</MenuItem> 
                             </Select>
                         </FormControl>
+                    </Box>
+                    <Box>
+                        <Coversation selectedRating={selectedRating}/>
                     </Box>
 
                 </Stack>
