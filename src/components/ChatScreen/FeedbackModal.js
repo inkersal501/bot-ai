@@ -7,7 +7,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import ThumbDownSharpIcon from '@mui/icons-material/ThumbDownSharp';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, IconButton } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -55,7 +55,7 @@ function FeedbackModal({id, openModal, handleCloseModal, feedback, setFeedback, 
                  id="transition-modal-title" variant="h6" component="p">
                 <ThumbDownSharpIcon color="#ffc107" fontSize='12px'/> Provide additional feedback
                 </Typography>
-                <CloseIcon color='light' onClick={handleCloseModal} cursor="pointer"/>
+                <IconButton onClick={handleCloseModal}><CloseIcon /></IconButton>
             </Box>
             <form onSubmit={handleFormSubmit}>
              <Box sx={{margin:"20px 0px",width:"100%"}} className='feedbackTextContainer'>

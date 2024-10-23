@@ -1,6 +1,7 @@
 import { Box, Stack, Typography, CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import CoversationCard from './CoversationCard';
+import Divider from '@mui/material/Divider';
 
 
 function Coversation({selectedRating}) {
@@ -46,7 +47,7 @@ function Coversation({selectedRating}) {
         {loading && <CircularProgress />}
         {!loading && Object.entries(tempData).map(([date, dateEntries]) => (
           <Box key={date}>
-            <Typography sx={{margin: "20px 0px 10px 0px", fontWeight: "bold"}} variant='h6'>{date}</Typography>
+            <Typography sx={{margin: "20px 0px 10px 0px", fontWeight: "bold", textAlign:"start"}} variant='h6'>{date}</Typography>
           
             <Stack spacing={2}>
             
@@ -56,7 +57,9 @@ function Coversation({selectedRating}) {
               
             ))}
             </Stack>
+            <Divider sx={{padding:"20px 0px"}}/>
           </Box>
+          
         ))}
       </Box>
     </div>

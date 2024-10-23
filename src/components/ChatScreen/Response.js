@@ -1,6 +1,8 @@
-import { Box, Stack, Typography, Rating } from '@mui/material'; 
+import { Box, Stack, Typography, Rating, IconButton } from '@mui/material'; 
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'; 
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
+
 import avatar from '../../assets/logo2.png';
 import "./ChatScreen.css";
 import { useState } from 'react';
@@ -28,7 +30,7 @@ function Response({data, handleRating, handleFeedback}) {
 
   return (
     <div>
-        <Box className='promptBox' onMouseOver={()=>setShowLike(true)} onMouseOut={()=>setShowLike(false)}>
+        <Box className='promptBox' onMouseOver={()=>setShowLike(true)} onMouseOut={()=>setShowLike(false)} boxShadow={5}>
             <Stack direction="row" spacing={2} alignItems="center">
                  <Box> 
                     <Box component="img" src={avatar} className='avatar'/>
@@ -38,17 +40,21 @@ function Response({data, handleRating, handleFeedback}) {
                         <Typography component="p" variant='p' fontWeight="bold">Bot AI</Typography>
                         <Typography component="p" variant='p' margin="10px 0px 0px 0px !important">{response.prompt}</Typography>
                         <Stack direction="row" justifyContent="space-between">
-                            <Typography component="p" variant='p' color='rgba(0, 0, 0, 0.62)' fontSize="12px">{response.time}</Typography>
+                            <Typography component="p" variant='p' fontSize="12px" sx={{color:"primary.text"}}>{response.time}</Typography>
                             {showLike &&
                             <Stack direction="row" spacing={1}>
-                              <ThumbUpOffAltIcon
-                                onClick={()=>{setShowRating(true);setEditableRating(true)}}
-                                color="dark" fontSize='12px' cursor="pointer"
-                              />
-                              <ThumbDownOffAltIcon 
-                                onClick={handleOpenModal}
-                                color="dark" fontSize='12px' cursor="pointer"
-                              />
+                              {!showRating ?
+                              <IconButton onClick={()=>{setShowRating(true);setEditableRating(true)}}>
+                                <ThumbUpOffAltIcon />
+                              </IconButton>
+                              :
+                              <IconButton onClick={()=>{setShowRating(false);setEditableRating(false)}}>
+                                <ThumbUpAltIcon />
+                              </IconButton>
+                              }
+                              <IconButton onClick={handleOpenModal}>
+                                <ThumbDownOffAltIcon />
+                              </IconButton>
                             </Stack>
                             }
                         </Stack>
@@ -62,6 +68,7 @@ function Response({data, handleRating, handleFeedback}) {
                             onChange={(event, newValue) => {
                               handleSetRating(newValue);
                             }}
+                            className='ratingIcons' 
                           />
                           </Box>
                         }

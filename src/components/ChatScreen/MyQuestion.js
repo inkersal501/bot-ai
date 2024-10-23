@@ -9,7 +9,7 @@ function MyQuestion({data}) {
   const qdata = data.request;
   return (
     <div>
-        <Box className='promptBox'>
+        <Box className='promptBox' boxShadow={5}>
             <Stack direction="row" spacing={2} alignItems="center">
                  <Box> 
                     <Box component="img" src={avatar} className='avatar'/>
@@ -18,7 +18,7 @@ function MyQuestion({data}) {
                     <Stack spacing={2} textAlign="left">
                         <Typography component="p" variant='p' fontWeight="bold">You</Typography>
                         <Typography component="p" variant='p' margin="10px 0px 0px 0px !important">{qdata.prompt}</Typography>
-                        <Typography component="p" variant='p' color='rgba(0, 0, 0, 0.62)' fontSize="12px">{qdata.time}</Typography>
+                        <Typography component="p" variant='p' fontSize="12px" sx={{color:"primary.text"}}>{qdata.time}</Typography>
                     </Stack>
                  </Box>
             </Stack>

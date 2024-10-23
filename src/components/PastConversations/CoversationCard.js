@@ -7,7 +7,7 @@ import botAvatar from '../../assets/logo2.png';
 function CoversationCard({data}) {
   return (
     <div>
-        <Box className="coversationCard">
+        <Box className="coversationCard" boxShadow={8}>
             <Stack direction={"column"} spacing={2} justifyContent={"center"}>
                 <Box>
                     <Stack direction={"row"} spacing={2}>
@@ -26,10 +26,10 @@ function CoversationCard({data}) {
                             </Stack>
                             {data.response.rating && <Box>
                             <Typography sx={{fontWeight:"bold"}}>Rating</Typography>
-                            <Rating name="read-only" value={data.response.rating} readOnly />
+                            <Rating name="read-only" value={data.response.rating} readOnly className='ratingIcons' />
                             </Box>}
-                            {data.response.feedback && <Box>
-                            <Typography sx={{fontWeight:"bold"}}>Feedback</Typography>
+                            {data.response.feedback && <Box sx={{display:"flex", gap:"10px"}}>
+                            <Typography sx={{fontWeight:"bold"}}>Feedback : </Typography>
                             <Typography>{data.response.feedback}</Typography>
                             </Box>}
                         </Stack>

@@ -3,7 +3,7 @@ import React from 'react';
 import './AskQuestion.css';
 
 function AskQuestion({askedQuestn, setAskedQuestn, handleAskedQuestn, handleSave}) {
-  
+ 
   return (
     <div>         
         <Box className='askQuestnBlock'>           
@@ -17,6 +17,7 @@ function AskQuestion({askedQuestn, setAskedQuestn, handleAskedQuestn, handleSave
                       required
                       onInput={(e)=>setAskedQuestn(e.target.value)}
                       value={askedQuestn}
+                      autoFocus={true}
                     />
                 </Box>
                 <Box><Button type="submit" variant="contained">Ask</Button></Box>

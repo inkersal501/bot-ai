@@ -142,7 +142,7 @@ const ChatScreen = ({ newchat, setNewChat }) => {
     };
 
     return (
-        <Box className='chatScreen'> 
+        <Box className='chatScreen' sx={{backgroundColor: 'background.chatScreen'}}> 
             {newchat ? (
                 <DefaultChatScreen />
             ) : (          

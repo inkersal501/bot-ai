@@ -5,7 +5,7 @@ import  './ChatScreen.css';
 function ExampleCard({text}) {
   return (
     <div>
-        <Box className='exampleBox'>
+        <Box className='exampleBox' boxShadow={5}>
             <Box>
                 <Typography 
                 component="h6" variant='h6'

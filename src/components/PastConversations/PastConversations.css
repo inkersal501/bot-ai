@@ -1,15 +1,16 @@
 .pastConversations{
-    margin-top: 64px;
-    height: -webkit-fill-available;
+    margin-top: 64px;    
     max-height: 98vh;
-    overflow-y: scroll; 
+    height: 100%;
+    overflow-y: auto; 
+    padding: 20px 0px;
 }
  
 .coversationCard{ 
-    padding: 20px 20px;
-    background-color: rgba(215, 199, 244, 1);  
+    padding: 20px 20px; 
     border-radius: 17px; 
 }
 .coversationCard > *{
     font-size: 14px !important;
+    text-align: start;
 }

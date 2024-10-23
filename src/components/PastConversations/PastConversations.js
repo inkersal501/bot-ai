@@ -13,9 +13,8 @@ function PastConversations() {
 
     return (
         <div>
-            <Box className="pastConversations">
+            <Box className="pastConversations" sx={{backgroundColor: 'background.chatScreen'}}>
                 <Stack spacing={2}>
-
                     <Box textAlign="center">
                         <Typography variant='h5' component="h6">Conversation History</Typography>
                         <FormControl sx={{marginTop: "20px"}} size="small"> 

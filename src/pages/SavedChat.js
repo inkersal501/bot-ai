@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import PastConversations from '../components/PastConversations/PastConversations';
 
 
-function SavedChat() {
+function SavedChat({ darkMode, toggleTheme}) {
 
   const navigate = useNavigate();
 
@@ -25,19 +25,20 @@ function SavedChat() {
   };
    
   return (
-    <div>
-        <Box sx={{ display: 'flex', height: '100vh' }}> 
-            
-            <Sidebar newchat={newchat} handleNewChat={handleNewChat}/>
+   
+      <div>
+          <Box sx={{ display: 'flex', height: '100vh' }}> 
+              
+              <Sidebar newchat={newchat} handleNewChat={handleNewChat} darkMode={darkMode} toggleTheme={toggleTheme} />
 
-            <Box
-            component="main" backgroundColor='#f5f5f5' flexGrow={1}
-            >     
-            <PastConversations />     
-             
-            </Box>
-        </Box>
-    </div>
+              <Box
+              component="main" flexGrow={1} sx={{backgroundColor:"background.chatScreen"}}
+              >     
+              <PastConversations />     
+              
+              </Box>
+          </Box>
+      </div> 
   )
 }
 
