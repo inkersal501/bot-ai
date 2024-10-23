@@ -16,8 +16,7 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem("BotAIDarkMode", JSON.stringify(darkMode));
-    console.log(darkMode);
+    localStorage.setItem("BotAIDarkMode", JSON.stringify(darkMode)); 
   }, [darkMode]);
 
   const toggleTheme = () => {
