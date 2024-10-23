@@ -11,7 +11,7 @@ import { SnackbarProvider } from 'notistack';
 function App() {
 
   const [darkMode, setDarkMode] = useState(()=>{
-    const localtheme = localStorage.getItem("BotAIDarkTheme");
+    const localtheme = localStorage.getItem("BotAIDarkMode");
     return localtheme?JSON.parse(localtheme):false;
   });
 
